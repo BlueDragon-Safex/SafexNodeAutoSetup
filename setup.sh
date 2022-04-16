@@ -1,5 +1,7 @@
 #!/bin/bash
-
+# wget -c -P /home/scripts https://raw.githubusercontent.com/BlueDragon-Safex/SafexNodeAutoSetup/4d962b2af49a4fb85ca093b8f1611f896c0a548c/setup.sh
+#chmod +x /home/scripts/setup.sh
+# /home/scripts/setup.sh
 
 mkdir -p /home/safex/lmdb/
 mkdir -p /home/scripts/
@@ -9,14 +11,14 @@ ufw allow 17401
 
 # Get the community aliases
 wget -c -P /root
-https://github.com/BlueDragon-Safex/SafexNodeAutoSetup/blob/main/.bash_aliases
+https://raw.githubusercontent.com/BlueDragon-Safex/SafexNodeAutoSetup/main/.bash_aliases
 
 #activate
 source ~/.bash_alaiases
 
 
 #Get the manin script to run
-wget -c -P /home/scripts https://github.com/BlueDragon-Safex/SafexNodeAutoSetup/blob/main/node.sh
+wget -c -P /home/scripts https://raw.githubusercontent.com/BlueDragon-Safex/SafexNodeAutoSetup/main/node.sh
 
 #activate it as a script
 chmod +x /home/scripts/node.sh
