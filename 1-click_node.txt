@@ -1,0 +1,256 @@
+Follow these steps literally (every character is important)
+For those that want to go through this fast without tking time to learn, just hit Enter when asked a question and it wil luse the most appropriate option automatically. 
+Of course, you can always take your own time to learn about these commands too!
+
+For any questions asked, just hit ENTER as the default option will be used (it's usually the option with the uppercase letter in it (i.e. Y/n means hitting enter is the same as typing Y and pressing enter for Yes, where y/N means hitting enter will be the same as typing N for No....so to make it easy, just hit enter wif you get a question!)
+(Everything in parenthesis below is just comments to help you understand what this is for, do not type the parenthesis or anything in between them)
+(note: number one(1) and the lowercase letter L(l) looks almost identical, so best to copy and paste if you are getting errors or nothing happening!)
+(i.e. can you tell the difference? 1l, l1, 11, ll) Answer key: (number letter, letter number, number number, letter letter)
+
+you type [special key] (notes) 
+
+#1a: Login as root 
+(just type root, or hit enter if you don't see "login:")
+root
+
+#1b Enter default password from vultr.com (shown on server panel)
+******
+
+#2: Change password to something you remember
+passwd
+(type password once)  
+(type password again to confirm)  
+
+#3: Update the Server
+sudo apt-get update  
+
+#4: Upgrade the Server
+sudo apt-get upgrade  
+
+#5: Install the HTOP process viewer
+sudo apt install htop  
+
+#6: Install the Screen program (to run things in different screens) 
+sudo apt-get install screen  
+
+#7: Install the libnorml (Copy and paste this, there are letters and numbers)
+sudo apt install libnorm1 libpcsclite1  
+
+#8: Update server a 2nd time since we installed stuff
+sudo apt update  
+
+#9: Install snap (a quick installer for other apps)
+sudo apt install snapd  
+(Press [ENTER] when any questions are asked)
+
+#10: Install docker (a container program to run images)
+sudo snap install docker  
+(Press [ENTER] when any questions are asked)
+ 
+#11: Update the link between docker install and user location
+sudo ln -s /snap/bin/docker /usr/bin/docker  
+
+#12: Make a couple sub-directories "safex/lmdb" for the blockchain under /Home
+mkdir -p /home/safex/lmdb
+
+#13: Make a "scripts" directory under /Home
+mkdir /home/scripts/
+
+#14: Open the port 17402 for outbound
+sudo ufw allow 17402
+
+#15: Open the port 17401 for inbound
+sudo ufw allow 17401
+
+#16: Create a new user
+adduser [username]       (example: aduser fred)
+[enter password for user]
+[Press enter 6 times for quesitons for first name, last name, etc}
+
+#17: Modify the user 
+usermod -aG sudo [username]   (example: usermod -aG sudo Fred)
+
+#18: Switch to new user (optional - you can do that after other steps are done)
+sudo su - [username]
+
+#19: Create the script to launch the Node Docker image (This will open a text editor to create a new script)
+nano /home/scripts/node.sh  
+
+#20a: (Editor opens up. Copy and paste this to the Window and click Paste, or hand type each line)
+-----------copy below this line----------------
+#!/bin/bash
+
+# Hashtags(#) will be the  start of a comnent line, not code. 
+
+# 1. The Path to save data to. Default is:  /home/safex
+dir='/home/safex'
+
+
+# 2. The version of the Docker Image/Safex Image. Default is:  7.0.2
+ver='7.0.2'
+
+
+# 3A or 3B (Use only one), put a hashtag before the ip mthod you do not want to use
+# 3A. Hardcode IP
+#ip='1.1.1.1'
+
+# 3b. Automatic IP (Best Method). This will lookup your IP Address automatically.
+ip=$(dig @resolver4.opendns.com myip.opendns.com +short)
+
+
+#  4. This will be the command we use to lauch the Docker image and start Node
+#     The substitutions are in place. $dir and $ip and $ver are inside this line
+cmd="docker run -it --network=host --rm -v $dir:/data -e RPC_IP=$ip safexninja/safex-rpc-node:$ver"
+
+
+# 5. As a courtesy, we can display some text to show what data we are using, such as our IP address
+#    and the command we are launching with
+echo "****************************************************************"
+echo
+echo "My public IP is: $ip"
+echo
+echo "Next, launch Safex Node via Docker version: $ver using: "
+echo "$cmd"
+echo
+echo "Let's get this Safex party started!!"
+echo
+echo "****************************************************************"
+
+# 6. This will actually run the command and start the node. 
+$cmd
+-----------copy above this line----------------
+(NOTE START: paste into the clipboard on the Vultr side bar and click the [PASTE] button
+  it will begin typing it in. One it is done, hide the clipboard and sidebar.
+  Then click on the black terminal window anywhere to put the focus there.
+  NOTE END)
+
+
+#20b: Save the Script
+CTRL+X  (this is the command to save and close)
+Y  (press Y and it will save)
+[ENTER]  (press enter and it will save as the same file name+type you started with. 
+
+#21: chmod +x /home/scripts/node.sh
+
+
+#22: (OPTIONAL: Download a near current the database as a starting point vs. syncing over 1-2 days)
+wget -c -P /home/safex/lmdb http://70.34.242.65/data.mdb
+
+(wait until it finshes (maybe 1-3 minutes)) 
+
+#23a: Update the Aliases
+nano ~/.bashrc
+
+#23b: (Editor opens up. Copy and paste this to the clipboard and click Paste, or type exactly as you see it)
+-----------copy below this line----------------
+  alias myip='dig resolver4.opendns.com myip.opendns.com +short'
+  alias setalias='nano ~/.bashrc'
+  alias loadalias='source ~/.bashrc'
+  alias editnode='nano /home/scripts/node.sh'
+  alias newnode='screen -S node -T Safexnode'
+  alias runnode='./home/scripts/node.sh'
+-----------copy above this line----------------
+
+
+#23c: Arrow down until the last line and add the code to run the node on login
+  . /home/scripts/node.sh
+
+
+#23d: Save and close the alias docuemnt
+CTRL+X  (this is the command to save and close)
+Y  (press Y and it will save)
+[ENTER]  (press enter and it will save as the same file name+type you started with. 
+
+#24: Refresh the aliases 
+source ~/.bashrc
+(Use this for the first time, after this, since we made an alias to refresh, you can refresh any changes to alias by typing: refresh_alias)
+
+#25. start the node using our alias we made
+noderun
+
+
+
+
+
+
+
+
+
+
+
+## Common commands - In Safex Node: 
+Save
+Exit
+ban 51.68.131.129 9999999
+
+## Common commands - in Linux
+sudo reboot (or reboot)
+
+## Common commands - in Screen
+CTRL+a+d (detach from screen and node runs in background)
+screen -ls (list screens to see the screen number.node)
+screen -r 1234.node (reattach to the node to see it, where 1234 will change each time you run node.sh)
+exit  (Kill the node and screen)
+
+
+sudo journalctl | grep safexservice
+
+
+sudo crontab -e
+
+#23a: Create a service to have it run at auto start
+sudo nano /etc/systemd/system/safex.service
+
+
+
+#23b: (Editor opens up. Copy and paste this to the Window and click Paste)
+-----------copy below this line----------------
+[Unit]
+Description=Safex Node Autostart Script
+After=network-online.target
+Requires=network-online.target
+
+[Service]
+ExecStart=/home/scripts/node.sh
+syslogIdentifier=safexservice
+Restart=always
+
+[Install]
+WantedBy=default.target
+-----------copy above this line----------------
+(NOTE START: paste into the clipboard on the Vultr side bar and click the [PASTE] button
+  it will begin typing it in. One it is done, hide the clipboard and sidebar.
+  Then click on the black terminal window anywhere to put the focus there.
+  NOTE END)
+
+
+#23c:
+CTRL+X  (this is the command to save and close)
+Y  (press Y and it will save)
+[ENTER]  (press enter and it will save as the same file name+type you started with. 
+
+#24: Activate the service to be able to run
+sudo systemctl enable safex.service
+sudo systemctl start safex.service
+
+
+
+[down arrow to the bottom of the hash tags]
+@reboot sh /home/node.sh &  
+(NOTE START: 
+@reboot   tells this server when to run...at restarting/rebooting
+sh        is telling it to run a script handler
+/home/    is the folder where we saved the script
+node.sh  is the same name we created in last step., if you changed it, then use whatever name you created. 
+&         The ampersand at teh end tells it to start in the background
+NOTE END)
+
+CTRL+X
+Y
+
+
+
+cd ~./home (NOTE: Navigate to the folder called Home)
+
+
+
