@@ -1,8 +1,7 @@
 SAFEX Easy Server Setup with automatic start 
 Version 1.0
 
-STEP 1: 
-Create Virtual server on VULTR.com: 
+STEP 1: Create Virtual server on VULTR.com: 
 --------------------------------------------
 Choose Server: Cloud Compute
 CPU & Storage Technology: Intel Regular Performance
