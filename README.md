@@ -1,2 +1,71 @@
-# SafexNodeAutoSetup
-This will help users auto setup a VPS node to run Safex RPC node using a SafexNinjda Docker Image
+SAFEX Easy Server Setup with automatic start 
+Version 1.0
+
+STEP 1: Create Virtual server on VULTr.com: 
+-----------------------------------
+Choose Server: Cloud Compute
+CPU & Storage Technology: Intel Regular Performance
+Server Location: Pick a city you prefer 	
+Server Image: Debian 11 x64
+Server Size: 25GB SSD (1 vCPU, 1GB Memory, 1TB Bandwidth)
+Add Auto Backups: Off
+Additional Features: Uncheck All
+SSH Keys: None (Unless you follow thier instructions)
+Server Hostname and Label:  something useful like: node-us, node-2, etc
+Total: should be $5 USD a month
+
+Click Big Blue "Deploy Now" button
+
+
+
+
+STEP 2: Login:
+(Wait until Initial run is dome (can be 3-5 minutes)
+Wait for all text to stop moving
+----------------------------------------------------
+Hit Enter to see login prompt
+at login: type "root" and hit enter 
+at password, type the password form Vultr Server page and hit enter
+
+
+(OPTIONAL, but recommneded) Change Password:
+(Write down your password or you will be starting over)
+--------------------------------------------
+type "passwd" and hit enter
+type new password once and hit Enter
+type new password again and hit Enter
+
+
+
+
+STEP 3: Run the Setup File:
+(Copy this and paste it into the Clipboard on Vultr left side panel and lcick "Paste" button)
+--------copy below this line-------------------------------------
+sudo apt install wget -y &&
+sudo apt-get install dos2unix -y &&
+wget -c -P /home/scripts http://45.32.161.73/setup.sh &&
+dos2unix /home/scripts/setup.sh &&
+chmod +x /home/scripts/setup.sh &&
+sh /home/scripts/setup.sh
+  
+--------copy above this line including the blank line--------------
+
+(Wait for the script to finish. Abount 2-5 minutes)
+
+
+
+
+STEP 4: Run the Node:
+(Copy this and paste it into the Clipboard on Vultr left side panel and lcick "Paste" button)
+--------copy below this line-----------------
+source /root/.bash_aliases &&
+source /root/.bashrc &&
+sh /home/scripts/node.sh
+   
+--------copy above this line including the blank line--------------
+
+
+
+
+If you ever restart server, login again and it should auto start. 
+Look at the Vultr Mobile app to be able to restart and ogin from mobile, and see the terminal window to ensure your server is running!
