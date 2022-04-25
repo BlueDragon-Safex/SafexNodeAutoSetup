@@ -1,8 +1,8 @@
 SAFEX Easy Server Setup with automatic start 
 Version 1.0
 
-STEP 1: Create Virtual server on VULTr.com: 
------------------------------------
+STEP 1: Create Virtual server on VULTR.com: 
+--------------------------------------------
 Choose Server: Cloud Compute
 CPU & Storage Technology: Intel Regular Performance
 Server Location: Pick a city you prefer 	
@@ -22,7 +22,7 @@ Click Big Blue "Deploy Now" button
 STEP 2: Login:
 (Wait until Initial run is dome (can be 3-5 minutes)
 Wait for all text to stop moving
-----------------------------------------------------
+-------------------------------------------------------
 Hit Enter to see login prompt
 at login: type "root" and hit enter 
 at password, type the password form Vultr Server page and hit enter
@@ -30,7 +30,7 @@ at password, type the password form Vultr Server page and hit enter
 
 (OPTIONAL, but recommneded) Change Password:
 (Write down your password or you will be starting over)
---------------------------------------------
+------------------------------------------------------
 type "passwd" and hit enter
 type new password once and hit Enter
 type new password again and hit Enter
@@ -40,6 +40,8 @@ type new password again and hit Enter
 
 STEP 3: Run the Setup File:
 (Copy this and paste it into the Clipboard on Vultr left side panel and lcick "Paste" button)
+------------------------------------------------------------------------------------------------
+
 --------copy below this line-------------------------------------
 sudo apt install wget -y &&
 sudo apt-get install dos2unix -y &&
@@ -57,6 +59,8 @@ sh /home/scripts/setup.sh
 
 STEP 4: Run the Node:
 (Copy this and paste it into the Clipboard on Vultr left side panel and lcick "Paste" button)
+------------------------------------------------------------------------------------------------
+
 --------copy below this line-----------------
 source /root/.bash_aliases &&
 source /root/.bashrc &&
@@ -66,6 +70,7 @@ sh /home/scripts/node.sh
 
 
 
-
+All done!
+------------------------------------------------------------------------------------------------
 If you ever restart server, login again and it should auto start. 
 Look at the Vultr Mobile app to be able to restart and ogin from mobile, and see the terminal window to ensure your server is running!
