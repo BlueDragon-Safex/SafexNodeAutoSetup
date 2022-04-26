@@ -1,6 +1,8 @@
 SAFEX Easy Node for Linux Server Setup with auto-start 
 
 Version 1.0
+See video of how easy it is here: https://www.youtube.com/watch?v=brjFNv_VyTg
+
 
 STEP 1: Create Virtual server on VULTR.com with these options: 
 ---------------------------------------------------------------
