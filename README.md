@@ -1,9 +1,9 @@
-SAFEX Easy Server Setup with automatic start 
+SAFEX Easy Node for Linux Server Setup with auto-start 
 
 Version 1.0
 
-STEP 1: Create Virtual server on VULTR.com: 
---------------------------------------------
+STEP 1: Create Virtual server on VULTR.com with these options: 
+---------------------------------------------------------------
 -Choose Server: Cloud Compute
 
 -CPU & Storage Technology: Intel Regular Performance
@@ -29,7 +29,7 @@ STEP 1: Create Virtual server on VULTR.com:
 
 
 
-STEP 2: Login:
+STEP 2: Login to the server:
 -------------------------------------------------------
 
 (Wait until Initial run is dome. It can be 3-5 minutes before all the text stops moving)
