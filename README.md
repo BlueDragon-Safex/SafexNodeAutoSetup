@@ -54,7 +54,7 @@ STEP 2: Login to the server:
 
 
 STEP 3: Run the Setup File:
-(Copy this and paste it into the Clipboard on Vultr left side panel and lcick "Paste" button)
+(Copy this and paste it into the Clipboard on Vultr left side panel and click "Paste" button)
 ------------------------------------------------------------------------------------------------
 
 --------copy below this line-------------------------------------
@@ -74,7 +74,7 @@ sh /home/scripts/setup.sh
 
 
 STEP 4: Run the Node:
-(Copy this and paste it into the Clipboard on Vultr left side panel and lcick "Paste" button)
+(Copy this and paste it into the Clipboard on Vultr left side panel and click "Paste" button)
 ------------------------------------------------------------------------------------------------
 
 --------copy below this line-----------------
