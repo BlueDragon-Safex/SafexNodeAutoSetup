@@ -66,7 +66,7 @@ dos2unix /home/scripts/setup.sh &&
 chmod +x /home/scripts/setup.sh &&
 sh /home/scripts/setup.sh
   
---------copy above this line including the blank line--------------
+--------copy above this line--------------
 
 (Wait for the script to finish. Abount 2-5 minutes)
 
@@ -83,7 +83,7 @@ source /root/.bash_aliases &&
 source /root/.bashrc &&
 sh /home/scripts/node.sh
    
---------copy above this line including the blank line--------------
+--------copy above this line--------------
 
 
 
