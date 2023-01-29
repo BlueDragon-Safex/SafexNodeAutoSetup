@@ -1,0 +1,20 @@
+Set Journalt o be small:
+
+journalctl --disk-usage
+
+nano /etc/systemd/journald.conf
+
+sudo systemctl restart systemd-journald
+
+
+SystemMaxUse=20M
+300M
+50M
+--
+100M
+100M
+200M
+
+
+Make a shortcut to a file:
+sudo ln -s /home/safex/lmdb/data.mdb /var/www/html/data.mdb
